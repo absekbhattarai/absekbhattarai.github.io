@@ -1,186 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
-
-    <title>My Portfolio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
     <style>
         @import url('https://fonts.googleapis.com/css?family=Roboto:700');
-
-        body {
-            margin: auto;
-            padding: 3rem;
-            margin: 5px;
-            background-image: url('https://cdn.shopify.com/s/files/1/2118/5289/products/EnvyLoops_Interconnected_V1_-_Glow-4K0_3840x.jpg?v=1527308804');
-            background-attachment: fixed;
-            background-size: cover;
+        body{
+            
+            background-image:url('https://wallpapers.gg/wp-content/uploads/2017/09/Digital-Background-3840x2400.jpg');
+            background-size:cover;
+            margin: 0px;
             font-family: 'Roboto';
-
-        }
-
-        .title {
-
             text-align: center;
-            font-family: 'Roboto';
-            font-family: cursive;
-            font-style: italic;
-            font-size: 3em;
-            border: 3px solid green;
-            border-radius: 2rem;
-            border-left: 1rem;
-            border-right: 1rem;
-            
-
+           
         }
-
-        .main {
-            margin-top: 50px;
-        }
-
-        img {
-            margin: 25px;
-            background-position: left;
-            border: solid;
-            border-width: 5px;
-            border-radius: 20rem;
-            margin-right: 15rem;
-        }
-
-        h2 {
-            vertical-align: 150px;
-            font-size: 35px;
-            font-family: 'sans-serif';
-            color: rgb(5, 10, 20);
-
-        }
-
-
-        .twitter-timeline {
-            margin-right: 50px;
-            position: relative;
-
-            image-orientation: center;
-            background-position: left;
+        .frontPage{
+            font-size: 150px;
+            font-family:cursive;
+            text-transform: uppercase;
+            color: darkslategray;
+            position: static;
+            text-shadow: 2px 2px red;
             
         }
-
-        .repos {
+        .redirect{
+            text-emphasis-color: black;
+            font-size: 50;
+            font-family:cursive;
+            text-transform: uppercase;
+            color: darkslategray;
+            position: static;
             
-            padding: 3px;
-            text-align: center;
-            word-wrap: break-word;
-            overflow: auto;
-            overflow-x: hidden;
             
-            border: 3px solid green;
-            border-radius: 1rem;
         }
-
-        #githubLink {
-
-            font-size: 16px;
-            font-family: fantasy;
-            color: black;
-            font-style: oblique;
-
-        }
-
-        .linkwrapper{
-            text-align:center;
-        }
-
-        .wrapper, #reposWrapper {
-            display: flex;
-        }
-        .repositories{
-            text-align: center;
-        }
-        li{
-            margin-bottom: 8px;
-        }
-    </style>
+</style>
 </head>
-
 <body>
-    <header class="title">My Portfolio</header>
-    <div class="main" id="mainContainer">
-        <div class="wrapper">
-            <img height="300" width="285" id="profileImage">
-            <div class="repositories">
-                <h2>Repositories</h2>
-
-                <div id="reposWrapper">
-                    
-                    <ul id="repos">
-                    </ul>
-                </div>
-            </div>
-
-
-        </div>
-
-        <h2 id="fullName"></h2>
-        <p id="bio"></p>
-        <h5 id="followersInformation"></h5>
-
+    <div class = "frontPage" id="openingPage">
+        Welcome to my portfolio   
+        
     </div>
-
-    <a class="twitter-timeline" data-width="250" data-height="400" data-theme="dark"
-        href="https://twitter.com/absekbhattarai?ref_src=twsrc%5Etfw">Tweets by absekbhattarai</a>
-    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-
-    <div class="linkwrapper">
-    <p>
-        Check me on <a id="githubLink">GitHub</a>
-    </p>
-    </div>
-
+    <a href="/portfolio.html" class="redirect">Go To Homepage</a>
 </body>
-
 </html>
 
 
-<script>
-    fetch("https://api.github.com/users/absekbhattarai", {
-        mode: 'no-cors' 
-    })
-        .then(response => response.json())
-        .then(function (data) {
 
-            console.log(data)
-
-
-            let followersCount = data['followers']
-            let followersInfo = `Followers: ${followersCount}`
-            document.getElementById('profileImage').src = data['avatar_url']
-            document.getElementById('fullName').textContent = data['name']
-            document.getElementById('bio').textContent = data['bio']
-            document.getElementById('followersInformation').textContent = followersInfo
-            document.getElementById('githubLink').href = data['html_url']
-
-           
-        })
-
-
-
-    fetch('https://api.github.com/users/absekbhattarai/repos')
-        .then(result => {
-            return result.json()
-        })
-        .then(function (res) {
-            for (let i = 0; i < res.length; i++) {
-                let data = res[i]
-                let reposName = data.name
-                let listItem = document.createElement('li')
-               g
-                let anchor = document.createElement('a')
-                anchor.innerText = reposName;
-                anchor.href = data.html_url
-                listItem.append(anchor)
-                document.getElementById('repos').append(listItem)
-            }
-
-
-        })
-</script>
